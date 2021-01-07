@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        {% from "_macro.html" import inicio_head %}
+        {{inicio_head()}}
+    </head>
+
+    <body> 
+        <center>
+        <h1>MBD Face Mask Beauty Test</h1>
+
+        <hr3>Califica las imagenes de 0 a 10 en función de la belleza de la persona.</hr3><br>
+        <hr3>Sientete libre de asignar la calificación que gustes, estas personas 
+            no son reales por lo que no vas a herir sus sentimientos.</hr3><br>
+        <!-- IMAGENES -->
+        <br>
+        <form action={{url_for('sentView')}} method="POST" name="surveyForm" id="surveyForm">
+            <div style="height:62vh">
+                <img src="{{url_for('static', filename='img/Persons/person_01_mask.jpg')}}" 
+                style="height: 100%; object-fit: cover;">
+            </div>
+            <br>
+            <label for="score">Score (between 0 and 10):</label><br>
+            <input type="range" id="vol" name="vol" min="0" max="10"><br><br>
+
+            <input type="submit" value="Finalizar">  
+        </form> 
+        </center>
+    </body>    
+
+</html>

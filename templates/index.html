@@ -3,21 +3,36 @@
 <html lang="en">
 
     <head>
-        <meta charset="utf-8">
-        <link rel="shortcut icon" type="image/x-icon" href="{{url_for('static', filename='img/mbdlogo.png')}}"/>
-        <title>MBD Beauty Test</title>
+        {% from "_macro.html" import inicio_head %}
+        {{inicio_head()}}
     </head>
 
     <body>  
         <h1>MBD Face Mask Beauty Test</h1>
 
         <!-- PREGUNTAS INICIALES, añadir correo para que reciban los resultados -->
-        <form action={{url_for('sentView')}} method="POST" name="surveyForm" id="surveyForm">
-            <label for="fname">First name:</label><br>
+        <form action={{url_for('scoreImagesView')}} method="POST" name="surveyForm" id="surveyForm">
+
+            <label for="fname">First name</label><br>
             <input type="text" id="fname" name="fname" value="John"><br>
-            <label for="lname">Last name:</label><br>
+            <label for="lname">Last name</label><br>
             <input type="text" id="lname" name="lname" value="Doe"><br><br>
-            <input type="submit" value="Submit">
+
+            <!-- Fecha de Nacimiento -->
+            <label for="date">Birthdate *</label><br>
+            <input type="date" id="birthdate" name="birthdate" 
+            max="2002-01-01"  min="1921-01-01" required><br><br>
+
+            <!-- Sexo -->
+            <label for="sex">Gender *</label><br>
+            <input type="radio" id="male" name="gender" value="male" required>
+            <label for="male">Male</label><br>
+            <input type="radio" id="female" name="gender" value="female" required>
+            <label for="female">Female</label><br>
+            <input type="radio" id="other" name="gender" value="other" required>
+            <label for="other">Other</label><br><br>
+
+            <input type="submit" value="Continue">
             
           </form> 
           

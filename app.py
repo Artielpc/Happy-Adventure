@@ -35,11 +35,23 @@ def index():
 	return render_template('index.html')	
 
 
+@app.route('/scoreImagesView', methods=['POST','GET'])
+def scoreImagesView():
+	print("OK")
+	if request.method == 'POST':
+		print(request.form)
+
+	return render_template('score_images.html')	
+
+
 @app.route('/sentView', methods=['POST','GET'])
 def sentView():
 	print("OK")
+	if request.method == 'POST':
+		print(request.form)
+
 	return render_template('survey_completed.html')	
 
 
 if (__name__=="__main__"):
-	app.run(debug=True, threaded=True)
+	app.run(debug=False, threaded=True)
