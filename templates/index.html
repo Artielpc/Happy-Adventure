@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <link rel="shortcut icon" type="image/x-icon" href="{{url_for('static', filename='img/mbdlogo.png')}}"/>
+        <title>MBD Beauty Test</title>
+    </head>
+
+    <body>  
+        <h1>MBD Face Mask Beauty Test</h1>
+
+        <!-- PREGUNTAS INICIALES, añadir correo para que reciban los resultados -->
+        <form action={{url_for('sentView')}} method="POST" name="surveyForm" id="surveyForm">
+            <label for="fname">First name:</label><br>
+            <input type="text" id="fname" name="fname" value="John"><br>
+            <label for="lname">Last name:</label><br>
+            <input type="text" id="lname" name="lname" value="Doe"><br><br>
+            <input type="submit" value="Submit">
+            
+          </form> 
+          
+
+        <!-- IMAGENES -->
+
+            
+        
+        <!-- PUNTUACIÓN DE IMAGENES -->
+
+
+
+    </body>    
+
+</html>
