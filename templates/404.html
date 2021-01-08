@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        {% from "_macro.html" import inicio_head %}
+        {{inicio_head()}}
+    </head>
+        
+    <body>  
+        <div class="row" style="height: 40vh; width: 100%;">
+            <img src="{{url_for('static', filename='img/404-page-not-found-gris.png')}}" height="100%" style="margin:auto">
+        </div>
+        <div class="page-header" style="text-align: center; color: rgb(16,31,66); width: 100%;">
+            <h1 style="font-weight: lighter; font-size: 7vh;">¡Vaya! La página que buscas no existe</h1>
+            <br>
+            <h4 style="font-weight: lighter; font-size: 3vh;">No encontramos esta página.<br>
+                Es posible que ya no esté disponible o que la hayamos cambiado de sitio.</h4>
+            <br><br>
+        </div>
+        <div class='row' style='height: 10vh; width:100%'>
+            <div class='col-12 my-auto' style='height:100%; width:100%; text-align:center'>
+                <form action = "{{url_for('index')}}" >
+                    <button id ='volver' class='btn btn-vodafone' type='submit'>Volver</button>
+                </form>
+            </div>
+        </div>    
+    </body>  
+</html>
