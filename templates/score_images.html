@@ -5,6 +5,8 @@
     <head>
         {% from "_macro.html" import inicio_head %}
         {{inicio_head()}}
+
+        <link rel="stylesheet" href ="{{url_for('static', filename='css/score_images.css')}}"> 
     </head>
 
     <body> 
@@ -13,20 +15,122 @@
 
         <hr3>Califica las imagenes de 0 a 10 en función de la belleza de la persona.</hr3><br>
         <hr3>Sientete libre de asignar la calificación que gustes, estas personas 
-            no son reales por lo que no vas a herir sus sentimientos.</hr3><br>
+            no son reales por lo que no vas a herir sus sentimientos.</hr3><br><br>
+
         <!-- IMAGENES -->
-        <br>
+        <!-- One "tab" for each step in the form: -->
         <form action={{url_for('sentView')}} method="POST" name="surveyForm" id="surveyForm">
+            <div class="tab">
+                <div style="height:45vh">
+                    <img src="{{url_for('static', filename='img/Persons/person_01_mask.jpg')}}" 
+                    style="height: 100%; object-fit: cover;">
+                </div>
+                <br>
+                <label for="score_01">Score (between 0 and 10):</label><br>
+                <input type="range" id="pic_01" name="pic_01" min="0" max="10"
+                oninput="this.className = ''"><br><br>
+            </div>
+            
+            <div class="tab">
+                <div style="height:45vh">
+                    <img src="{{url_for('static', filename='img/Persons/person_02.jpg')}}" 
+                    style="height: 100%; object-fit: cover;">
+                </div>
+                <br>
+                <label for="score_02">Score (between 0 and 10):</label><br>
+                <input type="range" id="pic_02" name="pic_02" min="0" max="10"
+                oninput="this.className = ''"><br><br>
+            </div>
+
+            <div class="tab">
+                <div style="height:45vh">
+                    <img src="{{url_for('static', filename='img/Persons/person_03_mask.jpg')}}" 
+                    style="height: 100%; object-fit: cover;">
+                </div>
+                <br>
+                <label for="score_03">Score (between 0 and 10):</label><br>
+                <input type="range" id="pic_03" name="pic_03" min="0" max="10"
+                oninput="this.className = ''"><br><br>
+            </div>
+
+            <div class="tab">
+                <div style="height:45vh">
+                    <img src="{{url_for('static', filename='img/Persons/person_04.jpg')}}" 
+                    style="height: 100%; object-fit: cover;">
+                </div>
+                <br>
+                <label for="score_04">Score (between 0 and 10):</label><br>
+                <input type="range" id="pic_04" name="pic_04" min="0" max="10"
+                oninput="this.className = ''"><br><br>
+            </div>
+
+            <div class="tab">
+                <div style="height:45vh">
+                    <img src="{{url_for('static', filename='img/Persons/person_05_mask.jpg')}}" 
+                    style="height: 100%; object-fit: cover;">
+                </div>
+                <br>
+                <label for="score_05">Score (between 0 and 10):</label><br>
+                <input type="range" id="pic_05" name="pic_05" min="0" max="10"
+                oninput="this.className = ''"><br><br>
+            </div>
+            
+            <div class="tab">
+                <label for="fname">First name</label><br>
+                <input type="text" id="fname" name="fname" value="John"><br>
+                <label for="lname">Last name</label><br>
+                <input type="text" id="lname" name="lname" value="Doe"><br><br>
+
+                <!-- Fecha de Nacimiento -->
+                <label for="date">Birthdate *</label><br>
+                <input type="date" id="birthdate" name="birthdate" 
+                max="2002-01-01"  min="1921-01-01" required><br><br>
+
+                <!-- Sexo -->
+                <label for="sex">Gender *</label><br>
+                <input class="gender" type="radio" id="male" name="gender" value="male" required>
+                <label for="male">Male</label><br>
+                <input class="gender" type="radio" id="female" name="gender" value="female" required>
+                <label for="female">Female</label><br><br>
+
+                <label for="email">Email</label><br>
+                <input type="email" id="email" name="email"><br><br>
+            </div>
+            
+            <div style="overflow:auto;">
+                <div style="float:center;">
+                    <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+                    <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+                </div>
+            </div>
+            
+            <!-- Circles which indicates the steps of the form: -->
+            <div style="text-align:center;margin-top:40px;">
+                <span class="step"></span>
+                <span class="step"></span>
+                <span class="step"></span>
+                <span class="step"></span>
+                <span class="step"></span>
+                <span class="step"></span>
+            </div>
+        
+        </form>
+
+
+        <!--<form action={{url_for('sentView')}} method="POST" name="surveyForm" id="surveyForm">
             <div style="height:62vh">
                 <img src="{{url_for('static', filename='img/Persons/person_01_mask.jpg')}}" 
                 style="height: 100%; object-fit: cover;">
             </div>
             <br>
-            <label for="score">Score (between 0 and 10):</label><br>
+            <label for="score_1">Score (between 0 and 10):</label><br>
             <input type="range" id="vol" name="vol" min="0" max="10"><br><br>
 
             <input type="submit" value="Finalizar">  
-        </form> 
+        </form>-->
+
+        <script src="{{url_for('static', filename='js/score_images.js')}}"></script>
+
         </center>
     </body>    
 
