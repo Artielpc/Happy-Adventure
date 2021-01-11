@@ -17,90 +17,46 @@
         <hr3>Sientete libre de asignar la calificación que gustes, estas personas 
             no son reales por lo que no vas a herir sus sentimientos.</hr3><br><br>
 
+        
+
         <!-- IMAGENES -->
         <!-- One "tab" for each step in the form: -->
         <form action={{url_for('sentView')}} method="POST" name="surveyForm" id="surveyForm">
-            <div class="tab">
-                <div style="height:45vh">
-                    <img src="{{url_for('static', filename='img/Persons/person_01_mask.jpg')}}" 
-                    style="height: 100%; object-fit: cover;">
-                </div>
-                <br>
-                <label for="score_01">Score (between 0 and 10):</label><br>
-                <input type="range" id="pic_01" name="pic_01" min="0" max="10"
-                oninput="this.className = ''"><br><br>
-            </div>
+
+            {% from "_macro.html" import mostrar_foto %}
+            {{mostrar_foto( pics[0], score[0] )}}
+            {{mostrar_foto( pics[1], score[1] )}}
+            {{mostrar_foto( pics[2], score[2] )}}
+            {{mostrar_foto( pics[3], score[3] )}}
+            {{mostrar_foto( pics[4], score[4] )}}
+            <!--{{mostrar_foto( pics[5], score[5] )}}
+            {{mostrar_foto( pics[6], score[6] )}}
+            {{mostrar_foto( pics[7], score[7] )}}
+            {{mostrar_foto( pics[8], score[8] )}}
+            {{mostrar_foto( pics[9], score[9] )}}-->
             
             <div class="tab">
-                <div style="height:45vh">
-                    <img src="{{url_for('static', filename='img/Persons/person_02.jpg')}}" 
-                    style="height: 100%; object-fit: cover;">
-                </div>
-                <br>
-                <label for="score_02">Score (between 0 and 10):</label><br>
-                <input type="range" id="pic_02" name="pic_02" min="0" max="10"
-                oninput="this.className = ''"><br><br>
-            </div>
-
-            <div class="tab">
-                <div style="height:45vh">
-                    <img src="{{url_for('static', filename='img/Persons/person_03_mask.jpg')}}" 
-                    style="height: 100%; object-fit: cover;">
-                </div>
-                <br>
-                <label for="score_03">Score (between 0 and 10):</label><br>
-                <input type="range" id="pic_03" name="pic_03" min="0" max="10"
-                oninput="this.className = ''"><br><br>
-            </div>
-
-            <div class="tab">
-                <div style="height:45vh">
-                    <img src="{{url_for('static', filename='img/Persons/person_04.jpg')}}" 
-                    style="height: 100%; object-fit: cover;">
-                </div>
-                <br>
-                <label for="score_04">Score (between 0 and 10):</label><br>
-                <input type="range" id="pic_04" name="pic_04" min="0" max="10"
-                oninput="this.className = ''"><br><br>
-            </div>
-
-            <div class="tab">
-                <div style="height:45vh">
-                    <img src="{{url_for('static', filename='img/Persons/person_05_mask.jpg')}}" 
-                    style="height: 100%; object-fit: cover;">
-                </div>
-                <br>
-                <label for="score_05">Score (between 0 and 10):</label><br>
-                <input type="range" id="pic_05" name="pic_05" min="0" max="10"
-                oninput="this.className = ''"><br><br>
-            </div>
-            
-            <div class="tab">
-                <label for="fname">First name</label><br>
-                <input type="text" id="fname" name="fname" value="John"><br>
-                <label for="lname">Last name</label><br>
-                <input type="text" id="lname" name="lname" value="Doe"><br><br>
-
                 <!-- Fecha de Nacimiento -->
-                <label for="date">Birthdate *</label><br>
-                <input type="date" id="birthdate" name="birthdate" 
-                max="2002-01-01"  min="1921-01-01" required><br><br>
+                <label for="birthdate">Edad</label><br>
+                <input type="number" id="birthdate" name="birthdate" required oninput="this.className = ''"><br><br>
 
                 <!-- Sexo -->
-                <label for="sex">Gender *</label><br>
-                <input class="gender" type="radio" id="male" name="gender" value="male" required>
-                <label for="male">Male</label><br>
-                <input class="gender" type="radio" id="female" name="gender" value="female" required>
-                <label for="female">Female</label><br><br>
+                <label for="sex">Género</label><br>
+                <fieldset id="gender">
+                    <input class="gender" type="radio" id="male" name="gender" value="male" required oninput="this.className = ''">
+                    <label for="male">Male</label><br>
+                    <input class="gender" type="radio" id="female" name="gender" value="female" required oninput="this.className = ''">
+                    <label for="female">Female</label>
+                </fieldset><br><br>
 
-                <label for="email">Email</label><br>
-                <input type="email" id="email" name="email"><br><br>
+                <label for="email">Email (Incluye el correo en caso de que quieras recibir los resultados del estudio)</label><br>
+                <input type="email" id="email" name="email" oninput="this.className = ''"><br><br>
             </div>
             
             <div style="overflow:auto;">
                 <div style="float:center;">
-                    <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
-                    <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+                    <button type="button" id="prevBtn" onclick="nextPrev(-1)">Anterior</button>
+                    <button type="button" id="nextBtn" onclick="nextPrev(1)">Siguiente</button>
                 </div>
             </div>
             
@@ -112,6 +68,11 @@
                 <span class="step"></span>
                 <span class="step"></span>
                 <span class="step"></span>
+                <!--<span class="step"></span>
+                <span class="step"></span>
+                <span class="step"></span>
+                <span class="step"></span>
+                <span class="step"></span>-->
             </div>
         
         </form>

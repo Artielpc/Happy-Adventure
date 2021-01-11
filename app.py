@@ -11,6 +11,7 @@ import json
 import time
 import socket
 from datetime import datetime
+import random
 
 
 app = Flask(__name__)
@@ -45,10 +46,9 @@ class Scores(db.Model):
 db.create_all()
 
 
-
-
 # diccionario para gestionar las valoraciones
-session_dict = {}
+pictures = os.listdir("static/img/Persons")
+print(pictures)
 
 
 @app.errorhandler(404)
@@ -79,7 +79,19 @@ def scoreImagesView():
 		db.session.add(aux)
 		db.session.commit()
 
-	return render_template('score_images.html')	
+        # Creamos las imagenes aleatorias que se van a mostrar
+		aux = random.sample(range(1,int(len(pictures)/2)),10)
+
+		for i in range(0,len(aux)):
+			aux[i] = str(aux[i]).zfill(2)
+			if (i % 2 == 1):
+				aux[i] = 'static/img/Persons/person_' + aux[i] + '_mask.jpg'
+			else:
+				aux[i] = 'static/img/Persons/person_' + aux[i] + '.jpg'
+        
+
+	return render_template('score_images.html', pics = aux, score = ['score_01', 'score_02', 'score_03', 'score_04' ,'score_05'
+    'score_06', 'score_07' ,'score_08' ,'score_09' ,'score_10'])	
 
 
 @app.route('/sentView', methods=['POST','GET'])

@@ -11,3 +11,59 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 
 integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 {% endmacro %}
+
+
+{% macro mostrar_foto(x,x0) %}
+<div class="tab">
+    <div style="height:45vh">
+        <img src={{x}}
+        style="height: 100%; object-fit: cover;">
+    </div><br>
+    <label for={{x0}}>Score</label><br>
+    <fieldset id={{x0}}>
+        <div class="row" style="width:62%">
+            <div class="col-1"></div>
+            <div class="col-1">
+                <input type="radio" id="s01" name="{{x0}}" value="1" required oninput="this.className = ''"><br>
+                <label for="s01">1</label>
+            </div>
+            <div class="col-1">
+                <input type="radio" id="s02" name="{{x0}}" value="2" required oninput="this.className = ''"><br>
+                <label for="s02">2</label>
+            </div>
+            <div class="col-1">
+                <input type="radio" id="s03" name="{{x0}}" value="3" required oninput="this.className = ''"><br>
+                <label for="s03">3</label>
+            </div>
+            <div class="col-1">
+                <input type="radio" id="s04" name="{{x0}}" value="4" required oninput="this.className = ''"><br>
+                <label for="s04">4</label>
+            </div>
+            <div class="col-1">
+                <input type="radio" id="s05" name="{{x0}}" value="5" required oninput="this.className = ''"><br>
+                <label for="s05">5</label>
+            </div>
+            <div class="col-1">
+                <input type="radio" id="s06" name="{{x0}}" value="6" required oninput="this.className = ''"><br>
+                <label for="s06">6</label>
+            </div>
+            <div class="col-1">
+                <input type="radio" id="s07" name="{{x0}}" value="7" required oninput="this.className = ''"><br>
+                <label for="s07">7</label>
+            </div>
+            <div class="col-1">
+                <input type="radio" id="s08" name="{{x0}}" value="8" required oninput="this.className = ''"><br>
+                <label for="s08">8</label>
+            </div>
+            <div class="col-1">
+                <input type="radio" id="s09" name="{{x0}}" value="9" required oninput="this.className = ''"><br>
+                <label for="s09">9</label>
+            </div>
+            <div class="col-1">
+                <input type="radio" id="s10" name="{{x0}}" value="10" required oninput="this.className = ''"><br>
+                <label for="s10">10</label>
+            </div>
+        </div>
+    </fieldset>
+</div>
+{% endmacro %}
