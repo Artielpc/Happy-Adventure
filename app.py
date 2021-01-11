@@ -22,9 +22,6 @@ class Scores(db.Model):
     gender = db.Column(db.String(10), nullable=False)
     ip = db.Column(db.String(20), nullable=True)
 
-    def __repr__(self):
-        return '<User %r>' % self.email
-
 db.create_all()
 
 
@@ -65,9 +62,6 @@ def index():
 @app.route('/sentView', methods=['POST','GET'])
 def sentView():
 	if request.method == 'POST':
-
-		print(request.form)
-
         # Añadimos las 10 votaciones a la base de datos
 		s = {}
 		registro = {}

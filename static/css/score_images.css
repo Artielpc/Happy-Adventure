@@ -13,10 +13,6 @@
     font-family: Raleway;
     border: 1px solid #aaaaaa;
   }
-
-  input.gender {
-
-  }
   
   /* Mark input boxes that gets an error on validation: */
   input.invalid {
