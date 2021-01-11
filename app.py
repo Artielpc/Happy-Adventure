@@ -37,8 +37,10 @@ class Resultados(db.Model):
 class Scores(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     person = db.Column(db.String(80), nullable=False)
-    score = db.Column(db.Numeric, nullable=False)
-    user_id = db.Column(db.String(80), nullable=False)
+    score = db.Column(db.Integer, nullable=True)
+    age = db.Column(db.Integer, nullable=False)
+    gender = db.Column(db.String(10), nullable=False)
+    ip = db.Column(db.String(20), nullable=True)
 
     def __repr__(self):
         return '<User %r>' % self.email
@@ -60,37 +62,23 @@ def internal_server_error(e):
     return render_template('500.html'), 500
 
 
-@app.route('/')
+
+
+@app.route('/', methods=['GET'])
 def index():
-	print("ESTA ES UNA PRUEBA")
+    # Creamos las imagenes aleatorias que se van a mostrar
+	aux = random.sample(range(1,int(len(pictures)/2)),10)
 
-	return render_template('index.html')	
+	for i in range(0,len(aux)):
+		aux[i] = str(aux[i]).zfill(2)
+		if (i % 2 == 1):
+			aux[i] = 'static/img/Persons/person_' + aux[i] + '_mask.jpg'
+		else:
+			aux[i] = 'static/img/Persons/person_' + aux[i] + '.jpg'
 
-
-@app.route('/scoreImagesView', methods=['POST','GET'])
-def scoreImagesView():
-	print("OK")
-	if request.method == 'POST':
-		print(request.form)
-
-		aux = Resultados(fname=request.form['fname'], lname=request.form['lname'], 
-        email=request.form['email'], gender=request.form['gender'], birthdate=request.form['birthdate'])
-
-		db.session.add(aux)
-		db.session.commit()
-
-        # Creamos las imagenes aleatorias que se van a mostrar
-		aux = random.sample(range(1,int(len(pictures)/2)),10)
-
-		for i in range(0,len(aux)):
-			aux[i] = str(aux[i]).zfill(2)
-			if (i % 2 == 1):
-				aux[i] = 'static/img/Persons/person_' + aux[i] + '_mask.jpg'
-			else:
-				aux[i] = 'static/img/Persons/person_' + aux[i] + '.jpg'
+	session["imagenes_usadas"] = aux
         
-
-	return render_template('score_images.html', pics = aux, score = ['score_01', 'score_02', 'score_03', 'score_04' ,'score_05'
+	return render_template('index.html', pics = aux, score = ['score_01', 'score_02', 'score_03', 'score_04' ,'score_05',
     'score_06', 'score_07' ,'score_08' ,'score_09' ,'score_10'])	
 
 
@@ -98,7 +86,62 @@ def scoreImagesView():
 def sentView():
 	print("OK")
 	if request.method == 'POST':
+
 		print(request.form)
+
+		s = {}
+		registro = {}
+		score = ['score_01', 'score_02', 'score_03', 'score_04' ,'score_05',
+		'score_06', 'score_07' ,'score_08' ,'score_09' ,'score_10']
+		for i in range(0,10):
+			try:
+				s[i] = request.form[score[i]]
+			except:
+				s[i] = 99
+			registro[i] = Scores(person=session["imagenes_usadas"][i], score=s[i], 
+			age=request.form['age'], gender=request.form['gender'])
+
+			db.session.add(registro[i])
+
+		db.session.commit()
+            
+		'''
+		score_01 = Scores(person=session["imagenes_usadas"][0], score=s01, 
+		age=request.form['age'], gender=request.form['gender'])
+		try:
+			score_02 = Scores(person=session["imagenes_usadas"][1], score=request.form['score_02'], 
+			age=request.form['age'], gender=request.form['gender'])
+		except:
+			score_02 = Scores(person=session["imagenes_usadas"][1], score=99,
+			age=request.form['age'], gender=request.form['gender'])
+		try:
+			score_03 = Scores(person=session["imagenes_usadas"][2], score=request.form['score_03'], 
+			age=request.form['age'], gender=request.form['gender'])
+		except:
+			score_03 = Scores(person=session["imagenes_usadas"][2], score=99,
+			age=request.form['age'], gender=request.form['gender'])
+		try:
+			score_04 = Scores(person=session["imagenes_usadas"][3], score=request.form['score_04'], 
+			age=request.form['age'], gender=request.form['gender'])
+		except:
+			score_04 = Scores(person=session["imagenes_usadas"][3], score=99,
+			age=request.form['age'], gender=request.form['gender'])
+		try:
+			score_05 = Scores(person=session["imagenes_usadas"][4], score=request.form['score_05'], 
+			age=request.form['age'], gender=request.form['gender'])
+		except:
+			score_05 = Scores(person=session["imagenes_usadas"][4], score=99,
+			age=request.form['age'], gender=request.form['gender'])
+
+
+		db.session.add(score_01)
+		db.session.add(score_02)
+		db.session.add(score_03)
+		db.session.add(score_04)
+		db.session.add(score_05)
+
+		db.session.commit()
+        '''
 
 	return render_template('survey_completed.html')	
 
