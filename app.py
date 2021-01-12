@@ -4,6 +4,8 @@ import numpy as np
 import os
 import pandas as pd
 import random
+import datetime
+
 
 app = Flask(__name__)
 app.secret_key = '123456789'
@@ -21,6 +23,7 @@ class Scores(db.Model):
     age = db.Column(db.Integer, nullable=False)
     gender = db.Column(db.String(10), nullable=False)
     ip = db.Column(db.String(20), nullable=True)
+    date = db.Column(db.DateTime, nullable=False)
 
 db.create_all()
 
@@ -62,16 +65,18 @@ def index():
 @app.route('/sentView', methods=['POST','GET'])
 def sentView():
 	if request.method == 'POST':
-        # Añadimos las 10 votaciones a la base de datos
+		# Añadimos las 10 votaciones a la base de datos
 		s = {}
 		registro = {}
+		time = datetime.datetime.now()
 		for i in range(0,10):
 			try:
 				s[i] = request.form[SCORE[i]]
 			except:
 				s[i] = 99
 			registro[i] = Scores(person=session["imagenes_usadas"][i], score=s[i], 
-			age=request.form['age'], gender=request.form['gender'], ip=request.remote_addr)
+			age=request.form['age'], gender=request.form['gender'], ip=request.remote_addr,
+            date = time)
 
 			db.session.add(registro[i])
 

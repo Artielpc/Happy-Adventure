@@ -1,7 +1,7 @@
 /* Style the form */
 #surveyForm {
     background-color: rgb(244,244,244);
-    width: 62vw;
+    width: 80vw;
     padding:2vh;
     border-radius: 2vh;
   }
@@ -45,3 +45,22 @@
   .step.finish {
     background-color: #4CAF50;
   }
+
+/* Cambiamos el formato de los botones */
+#prevBtn, #nextBtn {
+    background-color: rgb(208, 145, 28); /* MBD Gold */
+    border: none;
+    border-radius: 1vh;
+    color: white;
+    padding: 1vh 2vh;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 2vh;
+    outline: none;
+}
+
+#prevBtn:hover, #nextBtn:hover{
+    background-color: rgb(16,31,66); /* MBD Blue */
+}
+
