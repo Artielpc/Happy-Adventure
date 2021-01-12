@@ -6,7 +6,7 @@
 
 
 <link rel="shortcut icon" type="image/x-icon" href="{{url_for('static', filename='img/mbdlogo.png')}}"/>
-<title>MBD Beauty Test</title>
+<title>MBD Attractiveness Survey</title>
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 
 integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -15,11 +15,10 @@ integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLP
 
 {% macro mostrar_foto(x,x0) %}
 <div class="tab">
-    <div style="height:45vh">
+    <div style="height:50vh">
         <img src={{x}}
         style="height: 100%; width: 100%; max-width: 45vh; object-fit: cover; border-radius: 10px;">
     </div><br>
-    <label for={{x0}}>Puntuación</label><br>
     <fieldset id={{x0}}>
         <div class="row" style="max-width: 62vh">
             <div class="col-1"></div>
