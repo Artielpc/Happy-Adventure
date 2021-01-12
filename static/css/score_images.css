@@ -1,7 +1,7 @@
 /* Style the form */
 #surveyForm {
     background-color: rgb(244,244,244);
-    width: 80vw;
+    width: 84vw;
     padding:2vh;
     border-radius: 2vh;
   }
@@ -64,3 +64,6 @@
     background-color: rgb(16,31,66); /* MBD Blue */
 }
 
+.col-1{
+    padding: 0 !important;
+}
