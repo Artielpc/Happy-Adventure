@@ -65,6 +65,10 @@ def index():
 @app.route('/sentView', methods=['POST','GET'])
 def sentView():
 	if request.method == 'POST':
+		ip = request.remote_addr
+		ip = ip.replace('.','')
+		ip = ip[3:]
+
 		# Añadimos las 10 votaciones a la base de datos
 		s = {}
 		registro = {}
@@ -75,7 +79,7 @@ def sentView():
 			except:
 				s[i] = 99
 			registro[i] = Scores(person=session["imagenes_usadas"][i], score=s[i], 
-			age=request.form['age'], gender=request.form['gender'], ip=request.remote_addr,
+			age=request.form['age'], gender=request.form['gender'], ip=ip,
             date = time)
 
 			db.session.add(registro[i])
