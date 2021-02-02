@@ -11,7 +11,7 @@ app = Flask(__name__)
 app.secret_key = '123456789'
 
 # Conexion a la BBDD
-app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root:almena@35.234.68.236:3306/mascarillas"
+app.config['SQLALCHEMY_DATABASE_URI'] = "mysql+pymysql://root:almena@35.198.98.16:3306/mascarillas"
 app.config['SQLALCHEMY_ECHO'] = True
 
 db = SQLAlchemy(app)
