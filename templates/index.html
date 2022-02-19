@@ -12,13 +12,11 @@
     <body style="background-image: url(https://mbdanalytics.com/wp-content/uploads/2020/03/mbd-analytics2.jpg);
     background-size: cover;"> 
         <center>
-        <h1 style="color: white;">Face Mask Attractiveness Survey</h1>
+        <img id="redireccionMBD" src="{{url_for('static', filename='img/Happy Adventure Logo.png')}}" style="margin-top: 2vh;">
 
-        <div style="max-width: 750px;  color: white; font-size: 1.9vh;">
-            Los siguientes rostros han sido generados con inteligencia artificial por una red generativa antagónica (GAN),
-            a algunas fotos se les ha añadido una mascarilla para ver el efecto que genera su uso
-            en la percepción de la belleza.<br>
-            <hr3>Valora los rostros entre 1 y 10 en función del atractivo de la persona.
+        <div style="max-width: 750px;  color: whitesmoke; font-size: 17px;">
+            Introduce los datos del cliente para obtener la probabilidad estimada de las intenciones del cliente de volver
+            al parque de atracciones.
         </div><br>
 
         
@@ -27,58 +25,56 @@
         <!-- One "tab" for each step in the form: -->
         <form action={{url_for('sentView')}} method="POST" name="surveyForm" id="surveyForm">
 
-            {% from "_macro.html" import mostrar_foto %}
-            {{mostrar_foto( pics[0], score[0] )}}
-            {{mostrar_foto( pics[1], score[1] )}}
-            {{mostrar_foto( pics[2], score[2] )}}
-            {{mostrar_foto( pics[3], score[3] )}}
-            {{mostrar_foto( pics[4], score[4] )}}
-            {{mostrar_foto( pics[5], score[5] )}}
-            {{mostrar_foto( pics[6], score[6] )}}
-            {{mostrar_foto( pics[7], score[7] )}}
-            {{mostrar_foto( pics[8], score[8] )}}
-            {{mostrar_foto( pics[9], score[9] )}}
-            
             <div class="tab">
                 <!-- Fecha de Nacimiento -->
-                <label for="age">Edad</label><br>
-                <input type="number" id="age" name="age" required oninput="this.className = ''"><br><br>
-
+                <div class="pregunta" style="width: 100%;">
+                    <label for="age" style="font-weight: 600;">Edad</label><br>
+                    <input type="number" id="age" name="age" required oninput="this.className = ''">
+                </div>
                 <!-- Sexo -->
-                <label for="sex">Género</label><br>
-                <fieldset id="gender">
-                    <input class="gender" type="radio" id="male" name="gender" value="male" required oninput="this.className = ''">
-                    <label for="male">Masculino</label><br>
-                    <input class="gender" type="radio" id="female" name="gender" value="female" required oninput="this.className = ''">
-                    <label for="female">Femenino</label>
-                </fieldset><br><br>
+                <div class="pregunta">
+                    <label for="sex" style="font-weight: 600;">Género</label><br>
+                    <fieldset id="gender">
+                        <input class="gender" type="radio" id="male" name="gender" value="male" required oninput="this.className = ''">
+                        <label for="male">Masculino</label><br>
+                        <input class="gender" type="radio" id="female" name="gender" value="female" required oninput="this.className = ''">
+                        <label for="female">Femenino</label>
+                    </fieldset>
+                </div>
+
+                <!-- Amigos -->
+                <div class="pregunta" style="width: 100%;">
+                    <label for="friends" style="font-weight: 600;">Acompañantes amigos</label><br>
+                    <input type="number" id="age" name="age" required oninput="this.className = ''">
+                </div>
+                <!-- Punto de compra -->
+                <div class="pregunta">
+                    <label for="store" style="font-weight: 600;">Punto de compra</label><br>
+                    <select name="punto-compra" id="punto-compra">
+                        <option value="C">C</option>
+                        <option value="Q">Q</option>
+                        <option value="S">S</option>
+                    </select>
+                </div>
+
+                <!-- Segmento -->
+                <div class="pregunta">
+                    <label for="segment" style="font-weight: 600;">Segmento</label><br>
+                    <select name="segmento" id="segmento">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+                </div>
 
                 <!--<label for="email">Email (Incluye el correo en caso de que quieras recibir los resultados del estudio)</label><br>
                 <input type="email" id="email" name="email" oninput="this.className = ''"><br><br>-->
             </div>
             
-            <div style="overflow:auto;">
-                <div style="float:center;">
-                    <button type="button" id="prevBtn" onclick="nextPrev(-1)">Anterior</button>
-                    <button type="button" id="nextBtn" onclick="nextPrev(1)">Siguiente</button>
-                </div>
-            </div>
-            
-            <!-- Circles which indicates the steps of the form: -->
-            <div style="text-align:center;margin-top:2vh;">
-                <span class="step"></span>
-                <span class="step"></span>
-                <span class="step"></span>
-                <span class="step"></span>
-                <span class="step"></span>
-                <span class="step"></span>
-                <span class="step"></span>
-                <span class="step"></span>
-                <span class="step"></span>
-                <span class="step"></span>
-                <span class="step"></span>
-            </div>
-        
+            <div style="float:center; overflow:auto; margin-top:2vh;">
+                <button type="button" id="enviar">Enviar</button>
+            </div> 
+              
         </form>
 
         <script src="{{url_for('static', filename='js/score_images.js')}}"></script>

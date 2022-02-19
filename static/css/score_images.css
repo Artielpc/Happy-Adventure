@@ -6,15 +6,25 @@
     border-radius: 2vh;
     margin: 2vh;
     margin-top: 0;
+    min-width: 280px;
   }
   
   /* Style the input fields */
-  input {
-    padding: 10px;
-    font-size: 17px;
-    font-family: Raleway;
-    border: 1px solid #aaaaaa;
+  input, select {
+    padding: 5px;
+    font-size: 14px;
+    text-align: center;
+    border: none;
   }
+
+  select{
+    width: 100%;
+  }
+
+  .pregunta{
+      margin-bottom: 1vh;
+  }
+
   
   /* Mark input boxes that gets an error on validation: */
   input.invalid {
@@ -49,8 +59,8 @@
   }
 
 /* Cambiamos el formato de los botones */
-#prevBtn, #nextBtn {
-    background-color: rgb(208, 145, 28); /* MBD Gold */
+#enviar {
+    background-color: rgb(255, 0, 51); /* MBD Gold */
     border: none;
     border-radius: 1vh;
     color: white;
@@ -62,8 +72,9 @@
     outline: none;
 }
 
-#prevBtn:hover, #nextBtn:hover{
+#enviar:hover{
     background-color: rgb(16,31,66); /* MBD Blue */
+    cursor: pointer;
 }
 
 .col-1{

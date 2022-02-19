@@ -17,7 +17,7 @@ function showTab(n) {
     document.getElementById("nextBtn").innerHTML = "Siguiente";
   }
   // ... and run a function that displays the correct step indicator:
-  fixStepIndicator(n)
+  fixStepIndicator(n);
 }
 
 function nextPrev(n) {
