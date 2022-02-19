@@ -18,20 +18,17 @@ db = SQLAlchemy(app)
 
 class Scores(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    person = db.Column(db.String(80), nullable=False)
-    score = db.Column(db.Integer, nullable=True)
-    age = db.Column(db.Integer, nullable=False)
-    gender = db.Column(db.String(10), nullable=False)
-    ip = db.Column(db.String(20), nullable=True)
-    date = db.Column(db.DateTime, nullable=False)
+    hora = db.Column(db.DateTime, nullable=False)
+    edad = db.Column(db.Integer, nullable=True)
+    sexo = db.Column(db.String(6), nullable=False)
+    amigos = db.Column(db.Integer, nullable=False)
+    punto_compra = db.Column(db.String(1), nullable=True)
+    segmento = db.Column(db.String(1), nullable=False)
+    producto_A = db.Column(db.Float, nullable=False)
+    producto_B = db.Column(db.Float, nullable=False)
 
 db.create_all()
 
-
-# diccionarios para gestionar las fotos y valoraciones
-pictures = os.listdir("static/img/Persons")
-SCORE = ['score_01', 'score_02', 'score_03', 'score_04' ,'score_05',
-    'score_06', 'score_07' ,'score_08' ,'score_09' ,'score_10']
 
 
 @app.errorhandler(404)
@@ -43,47 +40,34 @@ def internal_server_error(e):
     return render_template('500.html'), 500
 
 
-
-
 @app.route('/', methods=['GET'])
 def index():
-    # Creamos las imagenes aleatorias que se van a mostrar
-	aux = random.sample(range(1,int(len(pictures)/2+1)),10)
-
-	for i in range(0,len(aux)):
-		aux[i] = str(aux[i]).zfill(2)
-		if (i % 2 == 1):
-			aux[i] = 'static/img/Persons/person_' + aux[i] + '_mask.jpg'
-		else:
-			aux[i] = 'static/img/Persons/person_' + aux[i] + '.jpg'
-
-	session["imagenes_usadas"] = aux
-        
-	return render_template('index.html', pics = aux, score = SCORE)	
+	return render_template('index.html')	
 
 
 @app.route('/sentView', methods=['POST','GET'])
 def sentView():
+	print("Entro a sentView")
 	if request.method == 'POST':
-		ip = request.remote_addr
-		ip = ip.replace('.','')
-		ip = ip[3:]
+		print(request)
 
-		# Añadimos las 10 votaciones a la base de datos
-		s = {}
-		registro = {}
-		time = datetime.datetime.now()
-		for i in range(0,10):
-			try:
-				s[i] = request.form[SCORE[i]]
-			except:
-				s[i] = 99
-			registro[i] = Scores(person=session["imagenes_usadas"][i], score=s[i], 
-			age=request.form['age'], gender=request.form['gender'], ip=ip,
-            date = time)
 
-			db.session.add(registro[i])
 
+        
+		
+		hora = datetime.datetime.now()
+		registro = Scores(
+            hora = hora,
+			edad = request.form['age'], 
+            sexo = request.form['gender'],
+            amigos = request.form['friends'], 
+            punto_compra = request.form['punto-compra'],
+            segmento = request.form['segmento'],
+            producto_A = request.form['prodA'], 
+            producto_B = request.form['prodB'],  
+        )
+
+		db.session.add(registro)
 		db.session.commit()
 
 	return render_template('survey_completed.html')	

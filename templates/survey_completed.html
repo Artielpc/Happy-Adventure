@@ -9,21 +9,23 @@
         <link rel="stylesheet" href ="{{url_for('static', filename='css/survey_completed.css')}}"> 
     </head>
 
-    <body style="background-image: url(https://mbdanalytics.com/wp-content/uploads/2020/03/mbd-analytics2.jpg);
-     background-size: cover; color: white;">
+    <body style="background-image: url({{url_for('static', filename='img/background.jpg')}}); background-size: cover; color: white;">
         <center> 
-        <img id="redireccionMBD" src="{{url_for('static', filename='img/Logo_web.png')}}" 
-        onclick="nuevaPestanha('https://mbdanalytics.com/');" style="padding:2vh; height: 15vh;">
+        <img id="redireccionMBD" src="{{url_for('static', filename='img/Happy Adventure Logo.png')}}" 
+        onclick="nuevaPestanha('https://www.securitasdirect.es/');" style="padding:2vh;">
 
         <!-- Agradecimiento y volver a página inicial -->
-        <div style="font-size: 8vh; margin-top: 20vh; margin-bottom: 15vh">
-            ¡Gracias por participar!
-        </div> 
-        <div style="font-size: 3vh; max-width: 750px; margin-bottom: 3vh;"> 
-            Mantente al tanto de las noticias en <a href="https://mbdanalytics.com/">MBD Analytics</a> 
-            para conocer los resultados del estudio o síguenos a través de
-            <a href="https://www.linkedin.com/company/mbd-consultores">LinkedIn</a>.
-        </div> 
+        <div class="resultado">
+            <div style="font-size: 100px; margin-bottom: 0vh">
+                80%
+            </div> 
+            <div style="font-size: 20px; max-width: 500px; margin-bottom: 5vh"> 
+                probabilidad de que el cliente tenga intenciones de volver al parque de atracciones
+            </div> 
+            <div>
+                <a id="volver" href='{{url_for("index")}}'>Volver</a>
+            </div>
+        </div>
 
         <script src="{{url_for('static', filename='js/survey_completed.js')}}"></script>
 

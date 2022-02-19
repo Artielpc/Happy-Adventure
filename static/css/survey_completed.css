@@ -9,3 +9,29 @@ a{
 a:hover{
     color: White;
 }
+
+#volver {
+    background-color: rgb(255, 0, 51); /* MBD Gold */
+    border: none;
+    border-radius: 1vh;
+    color: white;
+    padding: 1vh 2vh;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 2vh;
+    outline: none;
+}
+
+#volver:hover{
+    background-color: rgb(16,31,66); /* MBD Blue */
+    cursor: pointer;
+}
+
+.resultado{   
+    margin: 10vh 2vh; 
+    border-radius: 2vh;
+    backdrop-filter: blur(20px);
+    max-width: 500px;
+    padding: 20px;
+}

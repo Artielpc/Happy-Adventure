@@ -9,8 +9,7 @@
         <link rel="stylesheet" href ="{{url_for('static', filename='css/score_images.css')}}"> 
     </head>
 
-    <body style="background-image: url(https://mbdanalytics.com/wp-content/uploads/2020/03/mbd-analytics2.jpg);
-    background-size: cover;"> 
+    <body style="background-image: url({{url_for('static', filename='img/background.jpg')}}); background-size: cover;"> 
         <center>
         <img id="redireccionMBD" src="{{url_for('static', filename='img/Happy Adventure Logo.png')}}" style="margin-top: 2vh;">
 
@@ -25,11 +24,11 @@
         <!-- One "tab" for each step in the form: -->
         <form action={{url_for('sentView')}} method="POST" name="surveyForm" id="surveyForm">
 
-            <div class="tab">
+
                 <!-- Fecha de Nacimiento -->
-                <div class="pregunta" style="width: 100%;">
+                <div class="pregunta">
                     <label for="age" style="font-weight: 600;">Edad</label><br>
-                    <input type="number" id="age" name="age" required oninput="this.className = ''">
+                    <input  style="width: 100%;" type="number" id="age" name="age" required oninput="this.className = ''">
                 </div>
                 <!-- Sexo -->
                 <div class="pregunta">
@@ -43,13 +42,26 @@
                 </div>
 
                 <!-- Amigos -->
-                <div class="pregunta" style="width: 100%;">
+                <div class="pregunta">
                     <label for="friends" style="font-weight: 600;">Acompañantes amigos</label><br>
-                    <input type="number" id="age" name="age" required oninput="this.className = ''">
+                    <input style="width: 100%;" type="number" id="friends" name="friends" required oninput="this.className = ''">
                 </div>
+
+                <!-- Producto A -->
+                <div class="pregunta">
+                    <label for="prodA" style="font-weight: 600;">Producto A</label><br>
+                    <input style="width: 100%;" type="number" id="prodA" name="prodA" required oninput="this.className = ''">
+                </div>
+
+                <!-- Producto B -->
+                <div class="pregunta">
+                    <label for="prodB" style="font-weight: 600;">Producto B</label><br>
+                    <input style="width: 100%;" type="number" id="prodB" name="prodB" required oninput="this.className = ''">
+                </div>
+
                 <!-- Punto de compra -->
                 <div class="pregunta">
-                    <label for="store" style="font-weight: 600;">Punto de compra</label><br>
+                    <label for="punto-compra" style="font-weight: 600;">Punto de compra</label><br>
                     <select name="punto-compra" id="punto-compra">
                         <option value="C">C</option>
                         <option value="Q">Q</option>
@@ -59,25 +71,19 @@
 
                 <!-- Segmento -->
                 <div class="pregunta">
-                    <label for="segment" style="font-weight: 600;">Segmento</label><br>
+                    <label for="segmento" style="font-weight: 600;">Segmento</label><br>
                     <select name="segmento" id="segmento">
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
                     </select>
                 </div>
-
-                <!--<label for="email">Email (Incluye el correo en caso de que quieras recibir los resultados del estudio)</label><br>
-                <input type="email" id="email" name="email" oninput="this.className = ''"><br><br>-->
-            </div>
             
             <div style="float:center; overflow:auto; margin-top:2vh;">
-                <button type="button" id="enviar">Enviar</button>
+                <button type="submit" id="enviar">Enviar</button>
             </div> 
               
         </form>
-
-        <script src="{{url_for('static', filename='js/score_images.js')}}"></script>
 
         </center>
     </body>    
