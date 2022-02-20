@@ -9,54 +9,57 @@
         <link rel="stylesheet" href ="{{url_for('static', filename='css/score_images.css')}}"> 
     </head>
 
-    <body style="background-image: url({{url_for('static', filename='img/background.jpg')}}); background-size: cover;"> 
+    <body style="background-image: url({{url_for('static', filename='img/background_2.jpg')}}); background-size: cover;"> 
         <center>
-        <img id="redireccionMBD" src="{{url_for('static', filename='img/Happy Adventure Logo.png')}}" style="margin-top: 2vh;">
+        <img id="redireccionMBD" src="{{url_for('static', filename='img/Logo Blanco.png')}}" style="margin-top: 2vh;">
 
-        <div style="max-width: 750px;  color: whitesmoke; font-size: 17px;">
-            Introduce los datos del cliente para obtener la probabilidad estimada de las intencion del cliente de volver
-            al parque de atracciones
+        <div style="max-width: 600px;  color: whitesmoke; font-size: 17px; margin-top: 2vh;">
+            Introduce los datos del cliente para obtener su probabilidad de intención de volver al parque de atracciones
         </div><br>
 
         
 
-        <!-- IMAGENES -->
-        <!-- One "tab" for each step in the form: -->
+        <!-- FORMULARIO -->
         <form action={{url_for('sentView')}} method="POST" name="surveyForm" id="surveyForm">
-
 
                 <!-- Fecha de Nacimiento -->
                 <div class="pregunta">
                     <label for="age" style="font-weight: 600;">Edad</label><br>
-                    <input  style="width: 100%;" type="number" id="age" name="age" required oninput="this.className = ''">
+                    <input  style="width: 100%;" type="number" min="3" max="80" id="age" name="age" required oninput="this.className = ''">
                 </div>
                 <!-- Sexo -->
                 <div class="pregunta">
                     <label for="sex" style="font-weight: 600;">Género</label><br>
-                    <fieldset id="gender">
-                        <input class="gender" type="radio" id="male" name="gender" value="male" required oninput="this.className = ''">
-                        <label for="male">Masculino</label><br>
-                        <input class="gender" type="radio" id="female" name="gender" value="female" required oninput="this.className = ''">
-                        <label for="female">Femenino</label>
+                    <fieldset id="gender" style="display: flex;">
+                        <div style="width: 50%;">
+                            <input class="gender" type="radio" id="male" name="gender" value="male" required oninput="this.className = ''">
+                            <label for="male">Masculino</label>
+                        </div>
+                        <div style="width: 50%;">
+                            <input class="gender" type="radio" id="female" name="gender" value="female" required oninput="this.className = ''">
+                            <label for="female">Femenino</label>
+                        </div>
                     </fieldset>
                 </div>
 
                 <!-- Amigos -->
                 <div class="pregunta">
-                    <label for="friends" style="font-weight: 600;">Acompañantes amigos</label><br>
-                    <input style="width: 100%;" type="number" id="friends" name="friends" required oninput="this.className = ''">
+                    <label for="friends" style="font-weight: 600;">Amigos acompañantes</label><br>
+                    <input style="width: 100%;" type="number" min="0" max="20"  id="friends" name="friends" required oninput="this.className = ''">
                 </div>
 
+                <div style="display: flex;">
                 <!-- Producto A -->
-                <div class="pregunta">
-                    <label for="prodA" style="font-weight: 600;">Producto A</label><br>
-                    <input style="width: 100%;" type="number" id="prodA" name="prodA" required oninput="this.className = ''">
-                </div>
+                    <div class="pregunta" style="margin-right: 2vh;">
+                        <label for="prodA" style="font-weight: 600;">Producto A</label><br>
+                        <input style="width: 100%;" type="number" min="0" max="1000" step="any" id="prodA" name="prodA" required oninput="this.className = ''">
+                    </div>
 
-                <!-- Producto B -->
-                <div class="pregunta">
-                    <label for="prodB" style="font-weight: 600;">Producto B</label><br>
-                    <input style="width: 100%;" type="number" id="prodB" name="prodB" required oninput="this.className = ''">
+                    <!-- Producto B -->
+                    <div class="pregunta">
+                        <label for="prodB" style="font-weight: 600;">Producto B</label><br>
+                        <input style="width: 100%;" type="number" min="0" max="200" step="any" id="prodB" name="prodB" required oninput="this.className = ''">
+                    </div>
                 </div>
 
                 <!-- Punto de compra -->

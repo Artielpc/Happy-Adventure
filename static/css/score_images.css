@@ -6,7 +6,8 @@
     border-radius: 2vh;
     margin: 2vh;
     margin-top: 0;
-    min-width: 280px;
+    min-width: 250px;
+    max-width: 350px;
   }
   
   /* Style the input fields */

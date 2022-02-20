@@ -9,18 +9,18 @@
         <link rel="stylesheet" href ="{{url_for('static', filename='css/survey_completed.css')}}"> 
     </head>
 
-    <body style="background-image: url({{url_for('static', filename='img/background.jpg')}}); background-size: cover; color: white;">
+    <body style="background-image: url({{url_for('static', filename='img/background_2.jpg')}}); background-size: cover; color: white;">
         <center> 
-        <img id="redireccionMBD" src="{{url_for('static', filename='img/Happy Adventure Logo.png')}}" 
+        <img id="redireccionMBD" src="{{url_for('static', filename='img/Logo Blanco.png')}}" 
         onclick="nuevaPestanha('https://www.securitasdirect.es/');" style="padding:2vh;">
 
         <!-- Agradecimiento y volver a página inicial -->
         <div class="resultado">
             <div style="font-size: 100px; margin-bottom: 0vh">
-                80%
+                {{probabilidad}}%
             </div> 
             <div style="font-size: 20px; max-width: 500px; margin-bottom: 5vh"> 
-                probabilidad de que el cliente tenga intenciones de volver al parque de atracciones
+                de probabilidad de que el cliente tenga intención de volver al parque de atracciones
             </div> 
             <div>
                 <a id="volver" href='{{url_for("index")}}'>Volver</a>
