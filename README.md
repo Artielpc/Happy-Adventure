@@ -1,6 +1,6 @@
-# Happy-Adventure
+# Happy Adventure
 
-Repositorio con la herramienta web del business case Happy Adeventure.
+Repositorio con la herramienta web del business case Happy Adventure.
 
 ## Built with 🛠️
 
